@@ -114,6 +114,7 @@ erDiagram
         string email
         string password
         timestamp created_at
+        timestamp updated_at
     }
     
     forms {
@@ -124,6 +125,7 @@ erDiagram
         boolean limit_one_response
         bigint creator_id FK
         timestamp created_at
+        timestamp updated_at
     }
     
     allowed_domains {
@@ -135,17 +137,21 @@ erDiagram
     questions {
         bigint id PK
         string name
-        enum choice_type
+        string choice_type
         text choices
         boolean is_required
         bigint form_id FK
+        timestamp created_at
+        timestamp updated_at
     }
     
     responses {
         bigint id PK
         bigint form_id FK
         bigint user_id FK
-        timestamp date
+        datetime date
+        timestamp created_at
+        timestamp updated_at
     }
     
     answers {
