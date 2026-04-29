@@ -97,3 +97,60 @@ RESTful API for Dynamic Form Builder - Technical Assessment untuk **PT Hare Busi
 | 1 : N | `responses` | `answers` | Satu respons punya banyak jawaban |
 | 1 : N | `questions` | `answers` | Satu pertanyaan dijawab di banyak respons |
 
+### Diagram Relasi (Mermaid)
+
+```mermaid
+erDiagram
+    users ||--o{ forms : creates
+    forms ||--o{ allowed_domains : has
+    forms ||--o{ questions : has
+    forms ||--o{ responses : receives
+    users ||--o{ responses : submits
+    responses ||--o{ answers : contains
+    
+    users {
+        bigint id PK
+        string name
+        string email
+        string password
+        timestamp created_at
+    }
+    
+    forms {
+        bigint id PK
+        string name
+        string slug
+        text description
+        boolean limit_one_response
+        bigint creator_id FK
+        timestamp created_at
+    }
+    
+    allowed_domains {
+        bigint id PK
+        string domain
+        bigint form_id FK
+    }
+    
+    questions {
+        bigint id PK
+        string name
+        enum choice_type
+        text choices
+        boolean is_required
+        bigint form_id FK
+    }
+    
+    responses {
+        bigint id PK
+        bigint form_id FK
+        bigint user_id FK
+        timestamp date
+    }
+    
+    answers {
+        bigint id PK
+        bigint question_id FK
+        text value
+        bigint response_id FK
+    }
