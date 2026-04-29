@@ -97,7 +97,7 @@ RESTful API for Dynamic Form Builder - Technical Assessment untuk **PT Hare Busi
 | 1 : N | `responses` | `answers` | Satu respons punya banyak jawaban |
 | 1 : N | `questions` | `answers` | Satu pertanyaan dijawab di banyak respons |
 
-### Relasi Antar Tabel dalam diagram
+### Relasi Antar Tabel dalam Diagram
 ┌──────────────────┐ ┌──────────────────────────┐
 │ users │ │ forms │
 ├──────────────────┤ ├──────────────────────────┤
@@ -132,11 +132,6 @@ RESTful API for Dynamic Form Builder - Technical Assessment untuk **PT Hare Busi
 │ value (TEXT) │
 │ FK response_id │
 └──────────────────┘
-
-### Tipe Pertanyaan (choice_type)
-| Tipe | HTML Element | Butuh Choices? |
-|------|-------------|----------------|
-| short answer | TextField | ❌ Tidak |
 | paragraph | TextArea | ❌ Tidak |
 | date | Input Date | ❌ Tidak |
 | multiple choice | Radio | ✅ Ya |
